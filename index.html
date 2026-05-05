@@ -10,86 +10,261 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css">
-</head>
-<body data-theme="dark"> <!-- Defaulting to dark theme -->
+  <style>
+    /* 1. VARIABLE DEFINITIONS & THEME COLORS */
+    :root {
+      --bg-color: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --accent-color: #38bdf8; /* Your bright blue */
+      --btn-text: #ffffff;
+      --section-bg: #f8fafc;
+      --border-color: #e2e8f0;
+      --photo-shadow: rgba(0, 0, 0, 0.1);
+      --transition-speed: 0.3s;
+    }
 
-  <!-- Theme Switcher -->
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-color: #38bdf8;
+      --btn-text: #0f172a;
+      --section-bg: #1e293b;
+      --border-color: #334155;
+      --photo-shadow: rgba(0, 0, 0, 0.4);
+    }
+
+    /* 2. CORE STYLES & SMOOTH EFFECTS */
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      /* This makes the theme switch feel smooth like a fade */
+      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    }
+
+    /* 3. INTERACTIVE THEME TOGGLE */
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--section-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      z-index: 1000;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 6px var(--photo-shadow);
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    /* 4. HEADER & THE PHOTO (MODDLE PLACEMENT) */
+    header {
+      text-align: center;
+      padding: 80px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    .profile-photo {
+      width: 240px; /* Larger size */
+      height: 240px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 45px auto; /* Perfect middle spacing */
+      border: 8px solid var(--section-bg);
+      box-shadow: 0 20px 40px var(--photo-shadow);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.04);
+      border-color: var(--accent-color);
+    }
+
+    /* 5. HERO & BUTTON EFFECTS */
+    .hero {
+      text-align: center;
+      padding: 20px 20px 80px;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-weight: 500;
+      font-size: 1.6rem;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    .buttons { margin-top: 40px; }
+
+    .btn, .btn-outline {
+      display: inline-block;
+      padding: 14px 28px;
+      text-decoration: none;
+      margin: 10px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn {
+      background-color: var(--accent-color);
+      color: var(--btn-text);
+      box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.39);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.23);
+      filter: brightness(1.1);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--section-bg);
+      border-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    /* 6. CONTENT SECTIONS */
+    section {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 60px 30px;
+      transition: background-color var(--transition-speed) ease;
+    }
+
+    #about {
+      background-color: var(--section-bg);
+      border-radius: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      color: var(--accent-color);
+    }
+
+    /* 7. FOOTER */
+    footer {
+      text-align: center;
+      padding: 60px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
   <button id="theme-toggle" aria-label="Toggle dark mode">☀️</button>
 
   <header>
     <h1>Percival Ashley Ambundo</h1>
     <p>Digital Operations & AI Specialist | Executive Virtual Assistant | Marketing Director</p>
+    
+    <!-- Large, centered photo with hover effects -->
+    <img src="profile.jpg" alt="Percival Ashley Ambundo" class="profile-photo">
   </header>
 
   <section class="hero">
-  <!-- Replace 'profile.jpg' with your actual image file name -->
-  <img src="profile.jpg" alt="Percival Ashley Ambundo" class="profile-photo">
-  
-  <h2>Supporting global teams with streamlined operations, customer experience, and AI-driven productivity.</h2>
+    <h2>Supporting global teams with streamlined operations, customer experience, and AI-driven productivity.</h2>
 
-  <div class="buttons">
-    <a href="#work" class="btn">View My Work</a>
-    <a href="#contact" class="btn-outline">Get in Touch</a>
-  </div>
-</section>
+    <div class="buttons">
+      <a href="#work" class="btn">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </section>
 
   <section id="about">
     <h2>About</h2>
-    <p>
-      Percival Ashley Ambundo is a Kenyan digital operations specialist, executive virtual assistant, and marketing professional with experience supporting global organizations and leadership teams.
-    </p>
-    <p>
-      She currently works with Magic Inc., where she provides high-level administrative and operational support, ensuring efficiency across executive workflows, communication, and client management.
-    </p>
-    <p>
-      With a background in marketing leadership, Ambundo has managed campaigns and client relationships for organizations across multiple industries, consistently delivering high-performance results and customer satisfaction.
-    </p>
-    <p>
-      She holds a Bachelor of Arts degree from University of Nairobi, where she studied Political Science, Conflict and Peace Studies, and Sociology.
-    </p>
-    <p>
-      Beyond her professional work, she is actively engaged in digital conversations around technology, AI, and Kenyan socio-political issues, hosting and contributing to discussions that explore the intersection of digital transformation and society.
-    </p>
+    <p>Percival Ashley Ambundo is a Kenyan digital operations specialist and executive assistant with over 5 years of experience.</p>
+    <p>She currently provides high-level administrative and project-based support for global clients.</p>
+    <p>With a background in marketing leadership, she holds a degree from the University of Nairobi, specializing in Political Science, Conflict and Peace Studies, and Sociology.</p>
+    <p>Beyond professional work, she is an active voice in digital transformation and AI conversations within the Kenyan socio-political landscape.</p>
   </section>
 
   <section id="work">
-    <h2>Work</h2>
-    <p>Coming soon: Projects, media, and professional highlights.</p>
-  </section>
+  <h2>Core Expertise</h2>
+  
+  <div class="work-grid">
+    <div class="work-card">
+      <div class="icon">🚀</div>
+      <h3>Executive Operations</h3>
+      <p class="meta">Global Tech & Digital Agencies</p>
+      <ul>
+        <li>High-level administrative partnership focusing on calendar, inbox, and multi-timezone travel coordination.</li>
+        <li>Optimizing remote workflows using Slack, Trello, CRM systems, and Google Workspace.</li>
+        <li>Serving as a liaison for confidential stakeholder communications and project tracking.</li>
+      </ul>
+    </div>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:percivalashley1@gmail.com" style="color: inherit; text-decoration: underline;">percivalashley1@gmail.com</a></p>
-  </section>
+    <div class="work-card">
+      <div class="icon">🎤</div>
+      <h3>Strategic Communications</h3>
+      <p class="meta">Public Sector & Civic Engagement</p>
+      <ul>
+        <li>Leading large-scale event coordination and media activations for national health and judicial institutions.</li>
+        <li>Hosting and moderating digital discussions on civic and political transformation.</li>
+        <li>Consistently maintaining 90%+ client satisfaction through proactive issue handling.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="capabilities">
+  <h2>Specialized Skills & Credentials</h2>
+  <div class="skills-container">
+    <div class="cert-item">PMP Certified Project Management</div>
+    <div class="cert-item">Certified Web Professional</div>
+    <div class="cert-item">AI Data Training & Annotation</div>
+    <div class="cert-item">Multi-Timezone Coordination (ET/CT/PT/EAT)</div>
+    <div class="cert-item">Advanced CRM & Workflow Automation</div>
+    <div class="cert-item">Virtual Assistant Certification</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Let's Connect</h2>
+  <p>Ready to streamline your operations or discuss a potential partnership? Reach out below.</p>
+  <div class="contact-grid">
+    <a href="mailto:percivalashley1@gmail.com" class="btn">Email Me</a>
+    <a href="tel:+254725084243" class="btn-outline">Call +254 725 084 243</a>
+  </div>
+</section>
 
   <footer>
-    <p>© 2026 Percival Ashley Ambundo | Built for Efficiency</p>
+    <p>© 2026 Percival Ashley Ambundo | Built for Modern Efficiency</p>
   </footer>
 
-  <!-- JavaScript for the Theme Toggle -->
-  <script>
-    const toggleButton = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Check for saved preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      body.setAttribute('data-theme', savedTheme);
-      toggleButton.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-    }
-
-    toggleButton.addEventListener('click', () => {
-      const currentTheme = body.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
-      body.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      
-      // Toggle icon
-      toggleButton.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-    });
-  </script>
+  <script src="script.js"></script>
+</body>
 
 </body>
 </html>
