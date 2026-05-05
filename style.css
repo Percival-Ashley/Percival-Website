@@ -1,3 +1,4 @@
+/* 1. VARIABLE DEFINITIONS & THEME COLORS */
 :root {
   --bg-color: #ffffff;
   --text-main: #1e293b;
@@ -21,6 +22,7 @@
   --photo-shadow: rgba(0, 0, 0, 0.4);
 }
 
+/* 2. CORE STYLES & SMOOTH EFFECTS */
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
@@ -30,23 +32,7 @@ body {
   transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-header { text-align: center; padding: 80px 20px 20px; }
-header h1 { font-size: 2.8rem; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-header p { color: var(--text-muted); font-weight: 500; font-size: 1.1rem; }
-
-.profile-photo {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 40px auto;
-  border: 8px solid var(--section-bg);
-  box-shadow: 0 15px 30px var(--photo-shadow);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
-}
-.profile-photo:hover { transform: scale(1.05); border-color: var(--accent-color); }
-
+/* 3. INTERACTIVE THEME TOGGLE */
 #theme-toggle {
   position: fixed;
   top: 20px;
@@ -57,27 +43,108 @@ header p { color: var(--text-muted); font-weight: 500; font-size: 1.1rem; }
   padding: 12px;
   border-radius: 50%;
   cursor: pointer;
+  font-size: 1.2rem;
   z-index: 1000;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-shadow: 0 4px 6px var(--photo-shadow);
 }
-#theme-toggle:hover { transform: scale(1.1) rotate(10deg); }
 
-section {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 60px 20px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+#theme-toggle:hover {
+  transform: scale(1.1) rotate(10deg);
 }
-section.visible { opacity: 1; transform: translateY(0); }
 
+/* 4. HEADER & PROFILE PHOTO */
+header {
+  text-align: center;
+  padding: 80px 20px 20px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+header p {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.profile-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 40px auto;
+  border: 8px solid var(--section-bg);
+  box-shadow: 0 20px 40px var(--photo-shadow);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-color);
+}
+
+/* 5. HERO & CALL TO ACTION */
+.hero {
+  text-align: center;
+  padding: 20px 20px 80px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.hero h2 {
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.buttons { margin-top: 40px; }
+
+.btn, .btn-outline {
+  display: inline-block;
+  padding: 14px 28px;
+  text-decoration: none;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn {
+  background-color: var(--accent-color);
+  color: var(--btn-text);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+.btn-outline {
+  border: 2px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  background-color: var(--section-bg);
+}
+
+/* 6. EXPERTISE GRID (3 CARDS) */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
+  margin-top: 40px;
 }
+
 .portfolio-card {
   background: var(--section-bg);
   padding: 30px;
@@ -85,14 +152,42 @@ section.visible { opacity: 1; transform: translateY(0); }
   border: 1px solid var(--border-color);
   transition: all 0.4s ease;
 }
-.portfolio-card:hover { transform: translateY(-10px); border-color: var(--accent-color); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-.portfolio-card .icon { font-size: 2rem; margin-bottom: 10px; }
 
+.portfolio-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-color);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.portfolio-card .icon {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.portfolio-card h3 {
+  margin-top: 0;
+  color: var(--accent-color);
+  font-size: 1.4rem;
+}
+
+.portfolio-card ul {
+  padding-left: 20px;
+  margin-top: 15px;
+}
+
+.portfolio-card li {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* 7. TOOLS & SKILLS */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 15px;
 }
+
 .tool-item {
   background: var(--section-bg);
   padding: 15px;
@@ -102,31 +197,54 @@ section.visible { opacity: 1; transform: translateY(0); }
   border: 1px solid var(--border-color);
   transition: transform 0.3s ease;
 }
-.tool-item:hover { transform: translateY(-5px); border-color: var(--accent-color); }
 
-.skills-container { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.tool-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
 .cert-item {
-  padding: 10px 20px;
-  border: 1px solid var(--accent-color);
+  padding: 10px 22px;
+  border: 1.5px solid var(--accent-color);
   border-radius: 50px;
   font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-.cert-item:hover { background: var(--section-bg); color: var(--accent-color); }
-
-.btn, .btn-outline {
-  display: inline-block;
-  padding: 14px 28px;
-  text-decoration: none;
-  margin: 10px;
-  border-radius: 10px;
   font-weight: 600;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  background: var(--bg-color);
 }
-.btn { background: var(--accent-color); color: var(--btn-text); box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4); }
-.btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
-.btn-outline { border: 2px solid var(--border-color); color: var(--text-main); }
-.btn-outline:hover { transform: translateY(-3px); border-color: var(--accent-color); }
 
-footer { text-align: center; padding: 60px; border-top: 1px solid var(--border-color); color: var(--text-muted); }
+.cert-item:hover {
+  background: var(--section-bg);
+  transform: scale(1.05);
+}
+
+/* 8. SCROLL ANIMATION STATES */
+section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 60px 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 9. FOOTER */
+footer {
+  text-align: center;
+  padding: 60px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
