@@ -3,19 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Percival Ashley Ambundo</title>
-
+  <title>Percival Ashley Ambundo | Digital Operations & AI Specialist</title>
+  
+  <!-- Modern Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
+<body data-theme="dark"> <!-- Defaulting to dark theme -->
 
-<body>
+  <!-- Theme Switcher -->
+  <button id="theme-toggle" aria-label="Toggle dark mode">☀️</button>
 
-<header>
-  <h1>Percival Ashley Ambundo</h1>
-  <p>Digital Operations & AI Specialist | Executive Virtual Assistant | Marketing Director</p>
-</header>
+  <header>
+    <h1>Percival Ashley Ambundo</h1>
+    <p>Digital Operations & AI Specialist | Executive Virtual Assistant | Marketing Director</p>
+  </header>
 
-<section class="hero">
+  <section class="hero">
+  <!-- Replace 'profile.jpg' with your actual image file name -->
+  <img src="profile.jpg" alt="Percival Ashley Ambundo" class="profile-photo">
+  
   <h2>Supporting global teams with streamlined operations, customer experience, and AI-driven productivity.</h2>
 
   <div class="buttons">
@@ -24,43 +34,62 @@
   </div>
 </section>
 
-<section id="about">
-  <h2>About</h2>
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      Percival Ashley Ambundo is a Kenyan digital operations specialist, executive virtual assistant, and marketing professional with experience supporting global organizations and leadership teams.
+    </p>
+    <p>
+      She currently works with Magic Inc., where she provides high-level administrative and operational support, ensuring efficiency across executive workflows, communication, and client management.
+    </p>
+    <p>
+      With a background in marketing leadership, Ambundo has managed campaigns and client relationships for organizations across multiple industries, consistently delivering high-performance results and customer satisfaction.
+    </p>
+    <p>
+      She holds a Bachelor of Arts degree from University of Nairobi, where she studied Political Science, Conflict and Peace Studies, and Sociology.
+    </p>
+    <p>
+      Beyond her professional work, she is actively engaged in digital conversations around technology, AI, and Kenyan socio-political issues, hosting and contributing to discussions that explore the intersection of digital transformation and society.
+    </p>
+  </section>
 
-  <p>
-    Percival Ashley Ambundo is a Kenyan digital operations specialist, executive virtual assistant, and marketing professional with experience supporting global organizations and leadership teams.
-  </p>
+  <section id="work">
+    <h2>Work</h2>
+    <p>Coming soon: Projects, media, and professional highlights.</p>
+  </section>
 
-  <p>
-    She currently works with Magic Inc., where she provides high-level administrative and operational support, ensuring efficiency across executive workflows, communication, and client management.
-  </p>
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:percivalashley1@gmail.com" style="color: inherit; text-decoration: underline;">percivalashley1@gmail.com</a></p>
+  </section>
 
-  <p>
-    With a background in marketing leadership, Ambundo has managed campaigns and client relationships for organizations across multiple industries, consistently delivering high-performance results and customer satisfaction.
-  </p>
+  <footer>
+    <p>© 2026 Percival Ashley Ambundo | Built for Efficiency</p>
+  </footer>
 
-  <p>
-    She holds a Bachelor of Arts degree from University of Nairobi, where she studied Political Science, Conflict and Peace Studies, and Sociology.
-  </p>
+  <!-- JavaScript for the Theme Toggle -->
+  <script>
+    const toggleButton = document.getElementById('theme-toggle');
+    const body = document.body;
 
-  <p>
-    Beyond her professional work, she is actively engaged in digital conversations around technology, AI, and Kenyan socio-political issues, hosting and contributing to discussions that explore the intersection of digital transformation and society.
-  </p>
-</section>
+    // Check for saved preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      body.setAttribute('data-theme', savedTheme);
+      toggleButton.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
 
-<section id="work">
-  <h2>Work</h2>
-  <p>Coming soon: Projects, media, and professional highlights.</p>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: percivalashley1@gmail.com</p>
-</section>
-
-<footer>
-  <p>© 2026 Percival Ashley Ambundo</p>
-</footer>
+    toggleButton.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Toggle icon
+      toggleButton.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
 
 </body>
 </html>

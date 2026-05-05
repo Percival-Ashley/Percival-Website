@@ -1,44 +1,164 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #0f172a;
-  color: white;
+/* 1. VARIABLE DEFINITIONS */
+:root {
+  /* Light Theme (Default) */
+  --bg-color: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --accent-color: #38bdf8;
+  --btn-text: #ffffff;
+  --section-bg: #f8fafc;
+  --border-color: #e2e8f0;
+  --transition-speed: 0.3s;
 }
 
+[data-theme="dark"] {
+  /* Dark Theme */
+  --bg-color: #0f172a;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent-color: #38bdf8;
+  --btn-text: #0f172a;
+  --section-bg: #1e293b;
+  --border-color: #334155;
+}
+
+/* 2. CORE STYLES */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* 3. THEME TOGGLE BUTTON */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--section-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  z-index: 1000;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* 4. HEADER & HERO */
 header {
   text-align: center;
-  padding: 50px;
+  padding: 80px 20px 40px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .hero {
   text-align: center;
-  padding: 60px;
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
+.hero h2 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--text-main);
+}
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Makes it a circle */
+  object-fit: cover; /* Prevents stretching */
+  margin-bottom: 20px;
+  border: 4px solid var(--section-bg);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-speed) ease;
+}
+
+/* Optional: Slight hover effect for the photo */
+.profile-photo:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-color);
+}
+/* 5. BUTTONS */
 .buttons {
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+.btn, .btn-outline {
+  display: inline-block;
+  padding: 12px 24px;
+  text-decoration: none;
+  margin: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
 }
 
 .btn {
-  background: #38bdf8;
-  color: black;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 10px;
-  border-radius: 5px;
+  background-color: var(--accent-color);
+  color: var(--btn-text);
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
 }
 
 .btn-outline {
-  border: 1px solid white;
-  padding: 10px 20px;
-  text-decoration: none;
-  margin: 10px;
-  border-radius: 5px;
-  color: white;
+  border: 1.5px solid var(--border-color);
+  color: var(--text-main);
 }
 
+.btn-outline:hover {
+  background-color: var(--section-bg);
+  border-color: var(--accent-color);
+}
+
+/* 6. SECTIONS */
 section {
   max-width: 800px;
-  margin: auto;
+  margin: 40px auto;
+  padding: 40px 20px;
+}
+
+#about {
+  background-color: var(--section-bg);
+  border-radius: 12px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+/* 7. FOOTER */
+footer {
+  text-align: center;
   padding: 40px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
