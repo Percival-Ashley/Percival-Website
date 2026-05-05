@@ -1,6 +1,4 @@
-/* 1. VARIABLE DEFINITIONS */
 :root {
-  /* Light Theme (Default) */
   --bg-color: #ffffff;
   --text-main: #1e293b;
   --text-muted: #64748b;
@@ -8,11 +6,11 @@
   --btn-text: #ffffff;
   --section-bg: #f8fafc;
   --border-color: #e2e8f0;
+  --photo-shadow: rgba(0, 0, 0, 0.1);
   --transition-speed: 0.3s;
 }
 
 [data-theme="dark"] {
-  /* Dark Theme */
   --bg-color: #0f172a;
   --text-main: #f1f5f9;
   --text-muted: #94a3b8;
@@ -20,19 +18,35 @@
   --btn-text: #0f172a;
   --section-bg: #1e293b;
   --border-color: #334155;
+  --photo-shadow: rgba(0, 0, 0, 0.4);
 }
 
-/* 2. CORE STYLES */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.6;
   margin: 0;
   background-color: var(--bg-color);
   color: var(--text-main);
-  transition: background-color var(--transition-speed), color var(--transition-speed);
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
-/* 3. THEME TOGGLE BUTTON */
+header { text-align: center; padding: 80px 20px 20px; }
+header h1 { font-size: 2.8rem; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+header p { color: var(--text-muted); font-weight: 500; font-size: 1.1rem; }
+
+.profile-photo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 40px auto;
+  border: 8px solid var(--section-bg);
+  box-shadow: 0 15px 30px var(--photo-shadow);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+}
+.profile-photo:hover { transform: scale(1.05); border-color: var(--accent-color); }
+
 #theme-toggle {
   position: fixed;
   top: 20px;
@@ -40,211 +54,79 @@ body {
   background: var(--section-bg);
   border: 1px solid var(--border-color);
   color: var(--text-main);
-  padding: 10px 15px;
+  padding: 12px;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 1.2rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
   z-index: 1000;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 6px var(--photo-shadow);
 }
+#theme-toggle:hover { transform: scale(1.1) rotate(10deg); }
 
-#theme-toggle:hover {
-  transform: scale(1.1);
-}
-
-/* 4. HEADER & HERO */
-header {
-  text-align: center;
-  padding: 80px 20px 40px;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-header p {
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.hero h2 {
-  font-weight: 500;
-  font-size: 1.5rem;
-  color: var(--text-main);
-}
-.profile-photo {
-  /* This makes the image bigger as requested */
-  width: 200px; 
-  height: 200px;
-  
-  border-radius: 50%;
-  object-fit: cover;
-  
-  /* Centering and Spacing */
-  display: block;
-  margin: 30px auto; /* 30px space above and below the image */
-  
-  /* Premium border styling */
-  border: 5px solid var(--section-bg);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
-
-/* Add a little hover effect just for fun */
-.profile-photo:hover {
-  transform: scale(1.05);
-  border-color: var(--accent-color);
-}
-
-/* Adjust the header padding so everything isn't too cramped */
-header {
-  text-align: center;
-  padding: 60px 20px 20px; 
-}
-
-.hero {
-  text-align: center;
-  padding: 20px 20px 60px; /* Reduced top padding since the photo provides space */
-}
-/* 5. BUTTONS */
-.buttons {
-  margin-top: 30px;
-}
-
-.btn, .btn-outline {
-  display: inline-block;
-  padding: 12px 24px;
-  text-decoration: none;
-  margin: 10px;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all var(--transition-speed) ease;
-}
-
-.btn {
-  background-color: var(--accent-color);
-  color: var(--btn-text);
-}
-
-.btn:hover {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  border: 1.5px solid var(--border-color);
-  color: var(--text-main);
-}
-
-.btn-outline:hover {
-  background-color: var(--section-bg);
-  border-color: var(--accent-color);
-}
-
-/* 6. SECTIONS */
 section {
-  max-width: 800px;
+  max-width: 900px;
   margin: 40px auto;
-  padding: 40px 20px;
+  padding: 60px 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+section.visible { opacity: 1; transform: translateY(0); }
 
-#about {
-  background-color: var(--section-bg);
-  border-radius: 12px;
-}
-
-h2 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: var(--accent-color);
-}
-
-p {
-  margin-bottom: 20px;
-}
-
-.work-grid {
+.portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
-  margin-top: 40px;
 }
-
-.work-card {
+.portfolio-card {
   background: var(--section-bg);
   padding: 30px;
   border-radius: 20px;
   border: 1px solid var(--border-color);
   transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
 }
+.portfolio-card:hover { transform: translateY(-10px); border-color: var(--accent-color); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.portfolio-card .icon { font-size: 2rem; margin-bottom: 10px; }
 
-.work-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--accent-color);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px;
 }
-
-.work-card h3 {
-  margin-top: 15px;
-  color: var(--accent-color);
-}
-
-.work-card .icon {
-  font-size: 2rem;
-}
-
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-}
-
-.cert-item {
-  background: var(--bg-color);
+.tool-item {
+  background: var(--section-bg);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
   border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+}
+.tool-item:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+
+.skills-container { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.cert-item {
   padding: 10px 20px;
+  border: 1px solid var(--accent-color);
   border-radius: 50px;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
 }
+.cert-item:hover { background: var(--section-bg); color: var(--accent-color); }
 
-.cert-item:hover {
-  border-color: var(--accent-color);
-  background: var(--section-bg);
-  color: var(--accent-color);
+.btn, .btn-outline {
+  display: inline-block;
+  padding: 14px 28px;
+  text-decoration: none;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s;
 }
+.btn { background: var(--accent-color); color: var(--btn-text); box-shadow: 0 4px 14px rgba(56, 189, 248, 0.4); }
+.btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
+.btn-outline { border: 2px solid var(--border-color); color: var(--text-main); }
+.btn-outline:hover { transform: translateY(-3px); border-color: var(--accent-color); }
 
-/* 7. FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  border-top: 1px solid var(--border-color);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-/* Start state: Hidden and slightly shifted down */
-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* End state: Visible and in its original position */
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+footer { text-align: center; padding: 60px; border-top: 1px solid var(--border-color); color: var(--text-muted); }

@@ -10,176 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <style>
-    /* 1. VARIABLE DEFINITIONS & THEME COLORS */
-    :root {
-      --bg-color: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
-      --accent-color: #38bdf8; /* Your bright blue */
-      --btn-text: #ffffff;
-      --section-bg: #f8fafc;
-      --border-color: #e2e8f0;
-      --photo-shadow: rgba(0, 0, 0, 0.1);
-      --transition-speed: 0.3s;
-    }
-
-    [data-theme="dark"] {
-      --bg-color: #0f172a;
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
-      --accent-color: #38bdf8;
-      --btn-text: #0f172a;
-      --section-bg: #1e293b;
-      --border-color: #334155;
-      --photo-shadow: rgba(0, 0, 0, 0.4);
-    }
-
-    /* 2. CORE STYLES & SMOOTH EFFECTS */
-    body {
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      /* This makes the theme switch feel smooth like a fade */
-      transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
-    }
-
-    /* 3. INTERACTIVE THEME TOGGLE */
-    #theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--section-bg);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 12px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2rem;
-      z-index: 1000;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 4px 6px var(--photo-shadow);
-    }
-
-    #theme-toggle:hover {
-      transform: scale(1.1) rotate(10deg);
-    }
-
-    /* 4. HEADER & THE PHOTO (MODDLE PLACEMENT) */
-    header {
-      text-align: center;
-      padding: 80px 20px 20px;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-
-    header p {
-      color: var(--text-muted);
-      font-weight: 500;
-      font-size: 1.1rem;
-    }
-
-    .profile-photo {
-      width: 240px; /* Larger size */
-      height: 240px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 45px auto; /* Perfect middle spacing */
-      border: 8px solid var(--section-bg);
-      box-shadow: 0 20px 40px var(--photo-shadow);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
-    }
-
-    .profile-photo:hover {
-      transform: scale(1.04);
-      border-color: var(--accent-color);
-    }
-
-    /* 5. HERO & BUTTON EFFECTS */
-    .hero {
-      text-align: center;
-      padding: 20px 20px 80px;
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    .hero h2 {
-      font-weight: 500;
-      font-size: 1.6rem;
-      color: var(--text-main);
-      line-height: 1.4;
-    }
-
-    .buttons { margin-top: 40px; }
-
-    .btn, .btn-outline {
-      display: inline-block;
-      padding: 14px 28px;
-      text-decoration: none;
-      margin: 10px;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .btn {
-      background-color: var(--accent-color);
-      color: var(--btn-text);
-      box-shadow: 0 4px 14px 0 rgba(56, 189, 248, 0.39);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.23);
-      filter: brightness(1.1);
-    }
-
-    .btn-outline {
-      border: 2px solid var(--border-color);
-      color: var(--text-main);
-    }
-
-    .btn-outline:hover {
-      background-color: var(--section-bg);
-      border-color: var(--accent-color);
-      transform: translateY(-3px);
-    }
-
-    /* 6. CONTENT SECTIONS */
-    section {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 60px 30px;
-      transition: background-color var(--transition-speed) ease;
-    }
-
-    #about {
-      background-color: var(--section-bg);
-      border-radius: 20px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      color: var(--accent-color);
-    }
-
-    /* 7. FOOTER */
-    footer {
-      text-align: center;
-      padding: 60px;
-      border-top: 1px solid var(--border-color);
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body data-theme="dark">
 
@@ -189,7 +20,6 @@
     <h1>Percival Ashley Ambundo</h1>
     <p>Digital Operations & AI Specialist | Executive Virtual Assistant | Marketing Director</p>
     
-    <!-- Large, centered photo with hover effects -->
     <img src="profile.jpg" alt="Percival Ashley Ambundo" class="profile-photo">
   </header>
 
@@ -197,74 +27,88 @@
     <h2>Supporting global teams with streamlined operations, customer experience, and AI-driven productivity.</h2>
 
     <div class="buttons">
-      <a href="#work" class="btn">View My Work</a>
+      <a href="#work" class="btn">View Recent Work</a>
       <a href="#contact" class="btn-outline">Get in Touch</a>
     </div>
   </section>
 
   <section id="about">
     <h2>About</h2>
-    <p>Percival Ashley Ambundo is a Kenyan digital operations specialist and executive assistant with over 5 years of experience.</p>
-    <p>She currently provides high-level administrative and project-based support for global clients.</p>
-    <p>With a background in marketing leadership, she holds a degree from the University of Nairobi, specializing in Political Science, Conflict and Peace Studies, and Sociology.</p>
-    <p>Beyond professional work, she is an active voice in digital transformation and AI conversations within the Kenyan socio-political landscape.</p>
+    <p>Percival Ashley Ambundo is a Kenyan digital operations specialist and executive assistant with over 5 years of experience supporting senior leadership.</p>
+    <p>She currently provides high-level administrative partnership for global clients, ensuring efficiency across remote workflows and stakeholder communication.</p>
+    <p>She holds a Bachelor of Arts from the University of Nairobi, specializing in Political Science, Conflict & Peace Studies, and Sociology.</p>
   </section>
 
   <section id="work">
-  <h2>Core Expertise</h2>
-  
-  <div class="work-grid">
-    <div class="work-card">
-      <div class="icon">🚀</div>
-      <h3>Executive Operations</h3>
-      <p class="meta">Global Tech & Digital Agencies</p>
-      <ul>
-        <li>High-level administrative partnership focusing on calendar, inbox, and multi-timezone travel coordination.</li>
-        <li>Optimizing remote workflows using Slack, Trello, CRM systems, and Google Workspace.</li>
-        <li>Serving as a liaison for confidential stakeholder communications and project tracking.</li>
-      </ul>
+    <h2>Core Expertise</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <div class="icon">🚀</div>
+        <h3>Executive Operations</h3>
+        <p class="meta">Global Tech & Digital Agencies</p>
+        <ul>
+          <li>High-level administrative partnership focusing on calendar, inbox, and multi-timezone travel coordination.</li>
+          <li>Architecting and managing complex digital ecosystems across platforms including Notion, Canva, and CRM systems, alongside standardizing workflows in Slack, Trello, and Google Workspace.</li>
+          <li>Serving as a liaison for confidential stakeholder communications and project tracking.</li>
+        </ul>
+      </div>
+
+      <div class="portfolio-card">
+        <div class="icon">🎤</div>
+        <h3>Strategic Communications</h3>
+        <p class="meta">Public Sector & Civic Engagement</p>
+        <ul>
+          <li>Leading large-scale event coordination and media activations for national health and judicial institutions.</li>
+          <li>Hosting and moderating digital discussions on civic and political transformation.</li>
+          <li>Consistently maintaining 90%+ client satisfaction through proactive issue handling.</li>
+        </ul>
+      </div>
     </div>
+  </section>
 
-    <div class="work-card">
-      <div class="icon">🎤</div>
-      <h3>Strategic Communications</h3>
-      <p class="meta">Public Sector & Civic Engagement</p>
-      <ul>
-        <li>Leading large-scale event coordination and media activations for national health and judicial institutions.</li>
-        <li>Hosting and moderating digital discussions on civic and political transformation.</li>
-        <li>Consistently maintaining 90%+ client satisfaction through proactive issue handling.</li>
-      </ul>
+  <section id="tools">
+    <h2>Tools I Use</h2>
+    <div class="tools-grid">
+      <div class="tool-item">Trello</div>
+      <div class="tool-item">Google Workspace</div>
+      <div class="tool-item">Slack</div>
+      <div class="tool-item">Canva</div>
+      <div class="tool-item">Zoom</div>
+      <div class="tool-item">Notion</div>
+      <div class="tool-item">HubSpot</div>
+      <div class="tool-item">Zoho CRM</div>
+      <div class="tool-item">Microsoft Office</div>
+      <div class="tool-item">Asana</div>
+      <div class="tool-item" style="border-style: dashed; opacity: 0.8;">
+  & More...
+</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="capabilities">
-  <h2>Specialized Skills & Credentials</h2>
-  <div class="skills-container">
-    <div class="cert-item">PMP Certified Project Management</div>
-    <div class="cert-item">Certified Web Professional</div>
-    <div class="cert-item">AI Data Training & Annotation</div>
-    <div class="cert-item">Multi-Timezone Coordination (ET/CT/PT/EAT)</div>
-    <div class="cert-item">Advanced CRM & Workflow Automation</div>
-    <div class="cert-item">Virtual Assistant Certification</div>
-  </div>
-</section>
+  <section id="capabilities">
+    <h2>Specialized Credentials</h2>
+    <div class="skills-container">
+      <div class="cert-item">PMP Certified</div>
+      <div class="cert-item">Certified Web Professional</div>
+      <div class="cert-item">Virtual Assistant Certification</div>
+      <div class="cert-item">AI Data Training & Annotation</div>
+      <div class="cert-item">Multi-Timezone Coordination (ET/CT/PT/EAT)</div>
+    </div>
+  </section>
 
-<section id="contact">
-  <h2>Let's Connect</h2>
-  <p>Ready to streamline your operations or discuss a potential partnership? Reach out below.</p>
-  <div class="contact-grid">
-    <a href="mailto:percivalashley1@gmail.com" class="btn">Email Me</a>
-    <a href="tel:+254725084243" class="btn-outline">Call +254 725 084 243</a>
-  </div>
-</section>
+  <section id="contact">
+    <h2>Let's Work Together</h2>
+    <p>Available for high-level operations and executive partnership. I typically respond within 2 hours during US East Coast business hours.</p>
+    <div class="contact-grid">
+      <a href="mailto:percivalashley1@gmail.com" class="btn">Email Me</a>
+      <a href="https://linkedin.com" target="_blank" class="btn-outline">LinkedIn</a>
+    </div>
+  </section>
 
   <footer>
-    <p>© 2026 Percival Ashley Ambundo | Built for Modern Efficiency</p>
+    <p>© 2026 Percival Ashley Ambundo | Nairobi, Kenya</p>
   </footer>
 
   <script src="script.js"></script>
-</body>
-
 </body>
 </html>

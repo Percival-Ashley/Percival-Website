@@ -1,4 +1,4 @@
-// --- Theme Toggle Logic ---
+// Theme Toggle Logic
 const toggleButton = document.getElementById('theme-toggle');
 const body = document.body;
 
@@ -16,18 +16,15 @@ toggleButton.addEventListener('click', () => {
   toggleButton.textContent = newTheme === 'dark' ? '☀️' : '🌙';
 });
 
-// --- Scroll Animation Logic ---
+// Scroll Animation Logic
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
     }
   });
-}, { 
-  threshold: 0.1 // Triggers when 10% of the section is visible
-});
+}, { threshold: 0.1 });
 
-// Apply observer to all sections
 document.querySelectorAll('section').forEach(section => {
   observer.observe(section);
 });
